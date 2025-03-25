@@ -1,0 +1,270 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: label, datatype: int64, description: Unique source identification label number}
+# - {name: xcentroid, datatype: float64, format: .4f, description: X pixel value of the source centroid (0 indexed)}
+# - {name: ycentroid, datatype: float64, format: .4f, description: Y pixel value of the source centroid (0 indexed)}
+# - {name: sky_centroid.ra, unit: deg, datatype: float64}
+# - {name: sky_centroid.dec, unit: deg, datatype: float64}
+# - {name: aper_bkg_flux, unit: Jy, datatype: float64, format: .6e, description: The local background value calculated as the sigma-clipped
+#     median value in the background annulus aperture}
+# - {name: aper_bkg_flux_err, unit: Jy, datatype: float64, format: .6e, description: The standard error of the sigma-clipped median background
+#     value}
+# - {name: aper30_flux, unit: Jy, datatype: float64, format: .6e, description: Flux within the 30% encircled energy circular aperture}
+# - {name: aper30_flux_err, unit: Jy, datatype: float64, format: .6e, description: Flux error within the 30% encircled energy circular
+#     aperture}
+# - {name: aper50_flux, unit: Jy, datatype: float64, format: .6e, description: Flux within the 50% encircled energy circular aperture}
+# - {name: aper50_flux_err, unit: Jy, datatype: float64, format: .6e, description: Flux error within the 50% encircled energy circular
+#     aperture}
+# - {name: aper70_flux, unit: Jy, datatype: float64, format: .6e, description: Flux within the 70% encircled energy circular aperture}
+# - {name: aper70_flux_err, unit: Jy, datatype: float64, format: .6e, description: Flux error within the 70% encircled energy circular
+#     aperture}
+# - {name: aper_total_flux, unit: Jy, datatype: float64, format: .6e, description: Total aperture-corrected flux based on the 70% encircled
+#     energy circular aperture; should be used only for unresolved sources.}
+# - {name: aper_total_flux_err, unit: Jy, datatype: float64, format: .6e, description: Total aperture-corrected flux error based on the
+#     70% encircled energy circular aperture; should be used only for unresolved sources.}
+# - {name: aper30_abmag, datatype: float64, format: .6f, description: AB magnitude within the 30% encircled energy circular aperture}
+# - {name: aper30_abmag_err, datatype: float64, format: .6f, description: AB magnitude error within the 30% encircled energy circular
+#     aperture}
+# - {name: aper50_abmag, datatype: float64, format: .6f, description: AB magnitude within the 50% encircled energy circular aperture}
+# - {name: aper50_abmag_err, datatype: float64, format: .6f, description: AB magnitude error within the 50% encircled energy circular
+#     aperture}
+# - {name: aper70_abmag, datatype: float64, format: .6f, description: AB magnitude within the 70% encircled energy circular aperture}
+# - {name: aper70_abmag_err, datatype: float64, format: .6f, description: AB magnitude error within the 70% encircled energy circular
+#     aperture}
+# - {name: aper_total_abmag, datatype: float64, format: .6f, description: Total aperture-corrected AB magnitude based on the 70% encircled
+#     energy circular aperture; should be used only for unresolved sources.}
+# - {name: aper_total_abmag_err, datatype: float64, format: .6f, description: Total aperture-corrected AB magnitude error based on the
+#     70% encircled energy circular aperture; should be used only for unresolved sources.}
+# - {name: aper30_vegamag, datatype: float64, format: .6f, description: Vega magnitude within the 30% encircled energy circular aperture}
+# - {name: aper30_vegamag_err, datatype: float64, format: .6f, description: Vega magnitude error within the 30% encircled energy circular
+#     aperture}
+# - {name: aper50_vegamag, datatype: float64, format: .6f, description: Vega magnitude within the 50% encircled energy circular aperture}
+# - {name: aper50_vegamag_err, datatype: float64, format: .6f, description: Vega magnitude error within the 50% encircled energy circular
+#     aperture}
+# - {name: aper70_vegamag, datatype: float64, format: .6f, description: Vega magnitude within the 70% encircled energy circular aperture}
+# - {name: aper70_vegamag_err, datatype: float64, format: .6f, description: Vega magnitude error within the 70% encircled energy circular
+#     aperture}
+# - {name: aper_total_vegamag, datatype: float64, format: .6f, description: Total aperture-corrected Vega magnitude based on the 70% encircled
+#     energy circular aperture; should be used only for unresolved sources.}
+# - {name: aper_total_vegamag_err, datatype: float64, format: .6f, description: Total aperture-corrected Vega magnitude error based on
+#     the 70% encircled energy circular aperture; should be used only for unresolved sources.}
+# - {name: CI_50_30, datatype: float64, format: .4f, description: Concentration index calculated as (aper50_flux / aper30_flux)}
+# - {name: CI_70_50, datatype: float64, format: .4f, description: Concentration index calculated as (aper70_flux / aper50_flux)}
+# - {name: CI_70_30, datatype: float64, format: .4f, description: Concentration index calculated as (aper70_flux / aper30_flux)}
+# - {name: is_extended, datatype: bool, description: Flag indicating whether the source is extended}
+# - {name: sharpness, datatype: float64, format: .6f, description: The DAOFind source sharpness statistic}
+# - {name: roundness, datatype: float32, format: .6f, description: The DAOFind source roundness statistic}
+# - {name: nn_label, datatype: int64, description: The label number of the nearest neighbor}
+# - {name: nn_dist, unit: pix, datatype: float64, format: .6f, description: The distance in pixels to the nearest neighbor}
+# - {name: isophotal_flux, unit: Jy, datatype: float64, format: .6e, description: Isophotal flux}
+# - {name: isophotal_flux_err, unit: Jy, datatype: float32, format: .6e, description: Isophotal flux error}
+# - {name: isophotal_abmag, datatype: float64, format: .6f, description: Isophotal AB magnitude}
+# - {name: isophotal_abmag_err, datatype: float64, format: .6f, description: Isophotal AB magnitude error}
+# - {name: isophotal_vegamag, datatype: float64, format: .6f, description: Isophotal Vega magnitude}
+# - {name: isophotal_vegamag_err, datatype: float64, format: .6f, description: Isophotal Vega magnitude error}
+# - {name: isophotal_area, unit: pix2, datatype: float64, description: Isophotal area}
+# - {name: semimajor_sigma, unit: pix, datatype: float64, format: .6f, description: 1-sigma standard deviation along the semimajor axis
+#     of the 2D Gaussian function that has the same second-order central moments as the source}
+# - {name: semiminor_sigma, unit: pix, datatype: float64, format: .6f, description: 1-sigma standard deviation along the semiminor axis
+#     of the 2D Gaussian function that has the same second-order central moments as the source}
+# - {name: ellipticity, datatype: float64, format: .6f, description: 1 minus the ratio of the 1-sigma lengths of the semimajor and semiminor
+#     axes}
+# - {name: orientation, unit: deg, datatype: float64, format: .6f, description: The angle (degrees) between the positive X axis and the
+#     major axis (increases counter-clockwise)}
+# - {name: sky_orientation, unit: deg, datatype: float64, format: .6f, description: The position angle (degrees) from North of the major
+#     axis}
+# - {name: sky_bbox_ll.ra, unit: deg, datatype: float64}
+# - {name: sky_bbox_ll.dec, unit: deg, datatype: float64}
+# - {name: sky_bbox_ul.ra, unit: deg, datatype: float64}
+# - {name: sky_bbox_ul.dec, unit: deg, datatype: float64}
+# - {name: sky_bbox_lr.ra, unit: deg, datatype: float64}
+# - {name: sky_bbox_lr.dec, unit: deg, datatype: float64}
+# - {name: sky_bbox_ur.ra, unit: deg, datatype: float64}
+# - {name: sky_bbox_ur.dec, unit: deg, datatype: float64}
+# meta: !!omap
+# - {date: '2023-05-28 02:45:31 UTC'}
+# - version: {Python: 3.9.16, astropy: 5.2.2, bottleneck: null, gwcs: 0.18.3, jwst: 1.10.1, numpy: 1.24.2, photutils: 1.7.0, scipy: 1.9.1,
+#     skimage: 0.20.0}
+# - {localbkg_width: 0}
+# - {apermask_method: correct}
+# - kron_params: !numpy.ndarray
+#     buffer: !!binary |
+#       QUFBQUFBQUFCRUJtWm1abVptYjJQd0FBQUFBQUFBQUE=
+#     dtype: float64
+#     order: C
+#     shape: !!python/tuple [3]
+# - aperture_params:
+#     aperture_corrections: !numpy.ndarray
+#       buffer: !!binary |
+#         VWg1V1FNdkZBRUJTNmJrLw==
+#       dtype: float32
+#       order: C
+#       shape: !!python/tuple [3]
+#     aperture_ee: !numpy.ndarray
+#       buffer: !!binary |
+#         SGdBQUFBQUFBQUF5QUFBQUFBQUFBRVlBQUFBQUFBQUE=
+#       dtype: int64
+#       order: C
+#       shape: !!python/tuple [3]
+#     aperture_radii: !numpy.ndarray
+#       buffer: !!binary |
+#         cURXbFA5MGtCa0NUcVlSQQ==
+#       dtype: float32
+#       order: C
+#       shape: !!python/tuple [3]
+#     bkg_aperture_inner_radius: 6.5046000480651855
+#     bkg_aperture_outer_radius: 10.8193998336792
+# - {abvega_offset: 3.243562}
+# - __serialized_columns__:
+#     aper30_flux:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: &id001 !astropy.units.Unit {unit: Jy}
+#       value: !astropy.table.SerializedColumn {name: aper30_flux}
+#     aper30_flux_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: aper30_flux_err}
+#     aper50_flux:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: aper50_flux}
+#     aper50_flux_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: aper50_flux_err}
+#     aper70_flux:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: aper70_flux}
+#     aper70_flux_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: aper70_flux_err}
+#     aper_bkg_flux:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: aper_bkg_flux}
+#     aper_bkg_flux_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: aper_bkg_flux_err}
+#     aper_total_flux:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: aper_total_flux}
+#     aper_total_flux_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: aper_total_flux_err}
+#     ellipticity:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: ''}
+#       value: !astropy.table.SerializedColumn {name: ellipticity}
+#     isophotal_area:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: pix2}
+#       value: !astropy.table.SerializedColumn {name: isophotal_area}
+#     isophotal_flux:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: isophotal_flux}
+#     isophotal_flux_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: isophotal_flux_err}
+#     nn_dist:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: pix}
+#       value: !astropy.table.SerializedColumn {name: nn_dist}
+#     orientation:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: &id002 !astropy.units.Unit {unit: deg}
+#       value: !astropy.table.SerializedColumn {name: orientation}
+#     semimajor_sigma:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: pix}
+#       value: !astropy.table.SerializedColumn {name: semimajor_sigma}
+#     semiminor_sigma:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: pix}
+#       value: !astropy.table.SerializedColumn {name: semiminor_sigma}
+#     sky_bbox_ll:
+#       __class__: astropy.coordinates.sky_coordinate.SkyCoord
+#       __info__: {description: Sky coordinate of the lower-left vertex of the minimal bounding box of the source}
+#       dec: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Latitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_bbox_ll.dec}
+#       frame: icrs
+#       ra: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Longitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_bbox_ll.ra}
+#         wrap_angle: &id003 !astropy.coordinates.Angle
+#           unit: *id002
+#           value: 360.0
+#       representation_type: spherical
+#     sky_bbox_lr:
+#       __class__: astropy.coordinates.sky_coordinate.SkyCoord
+#       __info__: {description: Sky coordinate of the lower-right vertex of the minimal bounding box of the source}
+#       dec: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Latitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_bbox_lr.dec}
+#       frame: icrs
+#       ra: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Longitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_bbox_lr.ra}
+#         wrap_angle: *id003
+#       representation_type: spherical
+#     sky_bbox_ul:
+#       __class__: astropy.coordinates.sky_coordinate.SkyCoord
+#       __info__: {description: Sky coordinate of the upper-left vertex of the minimal bounding box of the source}
+#       dec: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Latitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_bbox_ul.dec}
+#       frame: icrs
+#       ra: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Longitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_bbox_ul.ra}
+#         wrap_angle: *id003
+#       representation_type: spherical
+#     sky_bbox_ur:
+#       __class__: astropy.coordinates.sky_coordinate.SkyCoord
+#       __info__: {description: Sky coordinate of the upper-right vertex of the minimal bounding box of the source}
+#       dec: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Latitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_bbox_ur.dec}
+#       frame: icrs
+#       ra: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Longitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_bbox_ur.ra}
+#         wrap_angle: *id003
+#       representation_type: spherical
+#     sky_centroid:
+#       __class__: astropy.coordinates.sky_coordinate.SkyCoord
+#       __info__: {description: ICRS Sky coordinate of the source centroid}
+#       dec: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Latitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_centroid.dec}
+#       frame: icrs
+#       ra: !astropy.table.SerializedColumn
+#         __class__: astropy.coordinates.angles.Longitude
+#         unit: *id002
+#         value: !astropy.table.SerializedColumn {name: sky_centroid.ra}
+#         wrap_angle: *id003
+#       representation_type: spherical
+#     sky_orientation:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id002
+#       value: !astropy.table.SerializedColumn {name: sky_orientation}
+# schema: astropy-2.0
+label xcentroid ycentroid sky_centroid.ra sky_centroid.dec aper_bkg_flux aper_bkg_flux_err aper30_flux aper30_flux_err aper50_flux aper50_flux_err aper70_flux aper70_flux_err aper_total_flux aper_total_flux_err aper30_abmag aper30_abmag_err aper50_abmag aper50_abmag_err aper70_abmag aper70_abmag_err aper_total_abmag aper_total_abmag_err aper30_vegamag aper30_vegamag_err aper50_vegamag aper50_vegamag_err aper70_vegamag aper70_vegamag_err aper_total_vegamag aper_total_vegamag_err CI_50_30 CI_70_50 CI_70_30 is_extended sharpness roundness nn_label nn_dist isophotal_flux isophotal_flux_err isophotal_abmag isophotal_abmag_err isophotal_vegamag isophotal_vegamag_err isophotal_area semimajor_sigma semiminor_sigma ellipticity orientation sky_orientation sky_bbox_ll.ra sky_bbox_ll.dec sky_bbox_ul.ra sky_bbox_ul.dec sky_bbox_lr.ra sky_bbox_lr.dec sky_bbox_ur.ra sky_bbox_ur.dec
+1 68.01162237055868 73.25258539706041 239.80652910691504 47.61169650593349 6.828004188719206e-07 3.509854675751093e-08 0.0008808634203510074 1.2218577469655802e-06 0.001568979075972217 1.534875937614559e-06 0.002437656720510156 1.721061075929531e-06 0.003540532748753606 2.4997256794461077e-06 16.537728561507272 0.0015049960404714335 15.910957120399132 0.0010616175880955939 15.432568633263529 0.0007662928763374742 15.027328460446977 0.0007662928763374742 13.294166578398752 0.0015049960404714335 12.667395137290612 0.0010616175880955939 12.189006650155008 0.0007662928763374742 11.783766477338457 0.0007662928763374742 1.7811831434060557 1.553657889924162 2.7673492441527383 False 0.6182932023955748 -0.013412851 -1 nan 0.0033846697362598377 1.9344016e-06 15.076209254461473 0.0006203411341849981 11.832647271352952 0.0006203411341849981 1702.0 4.474676267562955 4.289219225799254 0.041445912659220374 11.644481294616199 345.9190977067237 239.80682085994678 47.61236633772219 239.80550964618246 47.611940432462085 239.80747600885027 47.611449644101064 239.80616481273395 47.611023746306444
